@@ -18,7 +18,7 @@ namespace Mousetracker
             InitializeComponent();
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        public void button1_MouseClick(object sender, MouseEventArgs e)
         {
             label1.Visible = true;
             label2.Visible = true;
@@ -51,19 +51,99 @@ namespace Mousetracker
             f2.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void button1_Click(object sender, EventArgs e)
         {
+            int Score = 0;
             Target.Visible = true;
             TargX.Visible = true;
             TargY.Visible = true;
-            GameButton.Visible = true;
-            int My = MousePosition.X;
-            int Mx = MousePosition.Y;
+            Score2.Visible = true;
+            Scorel.Visible = true;
+            GameButton.Visible = false;
+            EndButton.Visible = true;
+            int My = MousePosition.Y;
+            int Mx = MousePosition.X;
             Random r = new Random();
-            int rIntX = r.Next(0, 1079);
-            int rIntY = r.Next(0, 1919);
+            int rIntX = r.Next(0, 1919);
+            int rIntY = r.Next(0, 1079);
             TargX.Text = rIntX.ToString();
             TargY.Text = rIntY.ToString();
+            Thread GamingThread = new Thread(Gamer); //makes a new thread for the code bellow
+            GamingThread.Start();
+            /* {
+                if (My == rIntY && Mx == rIntX) ;
+                {
+                    Scorel.Text = Score + 1.ToString();
+                    Random a = new Random();
+                    int aIntX = r.Next(0, 1919);
+                    int aIntY = r.Next(0, 1079);
+                    TargX.Text = rIntX.ToString();
+                    TargY.Text = rIntY.ToString();
+
+                }
+            } */
+            
+        }
+        private void Gamer()
+        {
+            void DrawEllipseRectangle(PaintEventArgs e)
+            {
+                // Create pen.
+                Pen blackPen = new Pen(Color.Black, 3);
+
+                // Create rectangle for ellipse.
+                int MY = MousePosition.Y;
+                int MX = MousePosition.X;
+                Rectangle rect = new Rectangle(MX, MY, 200, 100);
+
+                // Draw ellipse to screen.
+                e.Graphics.DrawEllipse(blackPen, rect);
+            }
+            int My = MousePosition.Y;
+            int Mx = MousePosition.X;
+            int rIntX;
+            int rIntY;
+            int Score = 0;
+
+            
+            Scorel.Text = Score.ToString();
+            Random r = new Random();
+            rIntX = r.Next(0, 1919);
+            rIntY = r.Next(0, 1079);
+            int radius = 5;
+            int rIntYRad = rIntY + radius;
+            int rIntXRad = rIntX + radius;
+
+            if (My <= rIntYRad && My >= -rIntYRad && Mx <= rIntXRad && Mx >= -rIntXRad)
+            {
+                Scorel.Text = Score + 1.ToString(); ;
+            }
+            
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Target.Visible = false;
+            TargX.Visible = false;
+            TargY.Visible = false;
+            Score2.Visible = false;
+            Scorel.Visible = false;
+            GameButton.Visible = true;
+            EndButton.Visible = false;
+            Scorel.Text = 0.ToString();
+
+            //GamingThread.Stop();
+        }
+
+        private void MouseTracker_Load(object sender, EventArgs e)
+        {
+            
+            //button1_MouseClick.trackerThread.();
         }
     }
 }
