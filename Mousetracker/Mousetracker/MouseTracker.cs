@@ -13,35 +13,65 @@ namespace Mousetracker
 {
     public partial class MouseTracker : Form
     {
+        private int TargetX;
+        private int TargetY;
+        private int Score = 0;
+        private int radiusAMiRIGHTxd;
+
+
+
+
         public MouseTracker()
         {
             InitializeComponent();
+            Tracker();
         }
 
         public void button1_MouseClick(object sender, MouseEventArgs e)
         {
-            label1.Visible = true;
-            label2.Visible = true;
-            lblx.Visible = true;
-            lbly.Visible = true;
+            label3.Visible = true;
             buttonstart.Visible = false;
             GameButton.Visible = true;
-
-
-
-            Thread trackerThread = new Thread(Tracker); //makes a new thread for the code bellow
-            trackerThread.Start();
-        
         }
-        private void Tracker()
+
+        private async void Tracker()
         {
             while (true) // infinite loop
             {
+                await Task.Delay(10);
                 int x = MousePosition.X;
                 int y = MousePosition.Y; // gets the mouse possition
+                radiusAMiRIGHTxd = vScrollBar1.Value;
 
-                lblx.Text = x.ToString();
-                lbly.Text = y.ToString(); // sets the form1's text field named "lbly" to the int value
+
+                label3.Text = $"X {x}\nY {y}";
+
+                //    §12345.a1-B
+                int dx = TargetX - x;
+				int dy = TargetY - y;
+
+				// a² + b² = c²
+
+				double distance = Math.Sqrt((dx * dx) + (dy * dy));
+                double BLOB = 0;
+                int radius = radiusAMiRIGHTxd;
+
+
+				// Math.Min(Math.Max(x, minimum), maximum)
+
+
+				//progressBar1.Value = (int) BLOB;
+				progressBar1.Value = (int) Math.Min(Math.Max(distance/10.0, 0), 100);
+
+				// Foony progress function bear made :) :)
+				//progressBar1.Value = (int)Math.Min(Math.Max(100.0 - Math.Log(distance, 2) / 10.0 * 100.0, 0), 100);
+
+				if (distance <= radius) 
+                {
+					Score = Score + 1;
+					Scorel.Text = Score.ToString();
+					TargetGameing();
+				}
             }
         }
 
@@ -53,7 +83,6 @@ namespace Mousetracker
 
         public void button1_Click(object sender, EventArgs e)
         {
-            int Score = 0;
             Target.Visible = true;
             TargX.Visible = true;
             TargY.Visible = true;
@@ -63,13 +92,11 @@ namespace Mousetracker
             EndButton.Visible = true;
             int My = MousePosition.Y;
             int Mx = MousePosition.X;
-            Random r = new Random();
-            int rIntX = r.Next(0, 1919);
-            int rIntY = r.Next(0, 1079);
-            TargX.Text = rIntX.ToString();
-            TargY.Text = rIntY.ToString();
-            Thread GamingThread = new Thread(Gamer); //makes a new thread for the code bellow
-            GamingThread.Start();
+            progressBar1.Visible = true;
+            vScrollBar1.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            TargetGameing();
             /* {
                 if (My == rIntY && Mx == rIntX) ;
                 {
@@ -81,11 +108,26 @@ namespace Mousetracker
                     TargY.Text = rIntY.ToString();
 
                 }
-            } */
-            
+            } 
+            while (true)
+            {
+                Gamer();
+            }*/
         }
+
+        private void TargetGameing()
+        {
+            Random r = new Random();
+            TargetX = r.Next(0, 1919);
+            TargetY = r.Next(0, 1079);
+
+            TargX.Text = TargetX.ToString();
+            TargY.Text = TargetY.ToString();
+        }
+
         private void Gamer()
         {
+
             void DrawEllipseRectangle(PaintEventArgs e)
             {
                 // Create pen.
@@ -103,9 +145,8 @@ namespace Mousetracker
             int Mx = MousePosition.X;
             int rIntX;
             int rIntY;
-            int Score = 0;
 
-            
+            /*
             Scorel.Text = Score.ToString();
             Random r = new Random();
             rIntX = r.Next(0, 1919);
@@ -113,12 +154,16 @@ namespace Mousetracker
             int radius = 5;
             int rIntYRad = rIntY + radius;
             int rIntXRad = rIntX + radius;
+            TargX.Text = rIntX.ToString();
+            TargY.Text = rIntY.ToString();
+            
 
             if (My <= rIntYRad && My >= -rIntYRad && Mx <= rIntXRad && Mx >= -rIntXRad)
             {
                 Scorel.Text = Score + 1.ToString(); ;
+
             }
-            
+            */
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -135,6 +180,10 @@ namespace Mousetracker
             Scorel.Visible = false;
             GameButton.Visible = true;
             EndButton.Visible = false;
+            progressBar1.Visible= false;
+            vScrollBar1.Visible = false;
+            label1.Visible = false;
+            label2.Visible = true;
             Scorel.Text = 0.ToString();
 
             //GamingThread.Stop();
@@ -144,6 +193,11 @@ namespace Mousetracker
         {
             
             //button1_MouseClick.trackerThread.();
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
         }
     }
 }

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Mousetracker.exe" size="49608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Mousetracker.exe" size="55240">
       <assemblyIdentity name="Mousetracker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HwUNOl4sjiLDNPdv6r8g+d17au4/6VeeIndL73KvKKk=</dsig:DigestValue>
+        <dsig:DigestValue>Qsh0i4SBkmLVnrdMaufY4GCJk8FJ/+wvtck5bWJrwWc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

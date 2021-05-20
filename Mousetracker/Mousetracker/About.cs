@@ -42,5 +42,10 @@ namespace Mousetracker
             ToS f3 = new ToS();
             f3.Show();
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.elisanet.fi/nikomk1999/");
+        }
     }
 }
