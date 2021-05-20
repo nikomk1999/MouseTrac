@@ -25,6 +25,7 @@ namespace Mousetracker
         {
             InitializeComponent();
             Tracker();
+            Gamer();
         }
 
         public void button1_MouseClick(object sender, MouseEventArgs e)
@@ -32,6 +33,7 @@ namespace Mousetracker
             label3.Visible = true;
             buttonstart.Visible = false;
             GameButton.Visible = true;
+            this.label3.Location = new Point(120, 50);
         }
 
         private async void Tracker()
@@ -96,6 +98,7 @@ namespace Mousetracker
             vScrollBar1.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
+            this.label3.Location = new Point(20, 50);
             TargetGameing();
             /* {
                 if (My == rIntY && Mx == rIntX) ;
@@ -136,17 +139,18 @@ namespace Mousetracker
                 // Create rectangle for ellipse.
                 int MY = MousePosition.Y;
                 int MX = MousePosition.X;
-                Rectangle rect = new Rectangle(MX, MY, 200, 100);
+                Rectangle rect = new Rectangle(0, 0, 200, 100);
 
                 // Draw ellipse to screen.
                 e.Graphics.DrawEllipse(blackPen, rect);
             }
+            /*
             int My = MousePosition.Y;
             int Mx = MousePosition.X;
             int rIntX;
             int rIntY;
 
-            /*
+            
             Scorel.Text = Score.ToString();
             Random r = new Random();
             rIntX = r.Next(0, 1919);
@@ -183,7 +187,8 @@ namespace Mousetracker
             progressBar1.Visible= false;
             vScrollBar1.Visible = false;
             label1.Visible = false;
-            label2.Visible = true;
+            label2.Visible = false;
+            this.label3.Location = new Point(120, 50);
             Scorel.Text = 0.ToString();
 
             //GamingThread.Stop();
@@ -196,6 +201,11 @@ namespace Mousetracker
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void toolStripTextBox2_Click(object sender, EventArgs e)
         {
 
         }

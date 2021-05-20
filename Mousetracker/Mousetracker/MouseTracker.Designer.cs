@@ -154,7 +154,7 @@ namespace Mousetracker
             // 
             this.EndButton.Location = new System.Drawing.Point(3, 3);
             this.EndButton.Name = "EndButton";
-            this.EndButton.Size = new System.Drawing.Size(46, 23);
+            this.EndButton.Size = new System.Drawing.Size(46, 26);
             this.EndButton.TabIndex = 4;
             this.EndButton.Text = "End";
             this.EndButton.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@ namespace Mousetracker
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(334, 152);
+            this.panel1.Size = new System.Drawing.Size(335, 153);
             this.panel1.TabIndex = 0;
             // 
             // progressBar1
@@ -249,7 +249,7 @@ namespace Mousetracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 152);
+            this.ClientSize = new System.Drawing.Size(335, 153);
             this.Controls.Add(this.panel1);
             this.Name = "MouseTracker";
             this.Text = "MouseTracking";
