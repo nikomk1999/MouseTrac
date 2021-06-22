@@ -22,17 +22,17 @@ namespace Mousetracker
             System.Diagnostics.Process.Start("https://github.com/nikomk1999/TBH-IM-LEARNING-CODING");
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object sender, EventArgs e) // ignore
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e) // ignore
         {
 
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void richTextBox1_TextChanged(object sender, EventArgs e) // ignore
         {
 
         }

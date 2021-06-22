@@ -13,22 +13,22 @@ namespace Mousetracker
 {
     public partial class MouseTracker : Form
     {
-        private int TargetX;
-        private int TargetY;
-        private int Score = 0;
-        private int radiusAMiRIGHTxd;
+        private int TargetX;                  //mouse target X location
+        private int TargetY;                 //mouse target y location
+        private int Score = 0;              //score for the game thing (aka how many times mouse hits targert x,y
+        private int radiusAMiRIGHTxd;      //target radius
 
 
 
 
-        public MouseTracker()
+        public MouseTracker()   //starts a few things
         {
             InitializeComponent();
             Tracker();
             Gamer();
         }
 
-        public void button1_MouseClick(object sender, MouseEventArgs e)
+        public void button1_MouseClick(object sender, MouseEventArgs e)   
         {
             label3.Visible = true;
             buttonstart.Visible = false;
@@ -46,7 +46,7 @@ namespace Mousetracker
                 radiusAMiRIGHTxd = vScrollBar1.Value;
 
 
-                label3.Text = $"X {x}\nY {y}";
+                label3.Text = $"X {x}\nY {y}";       //creates mouse x and y text
 
                 //    §12345.a1-B
                 int dx = TargetX - x;
@@ -65,10 +65,10 @@ namespace Mousetracker
 				//progressBar1.Value = (int) BLOB;
 				progressBar1.Value = (int) Math.Min(Math.Max(distance/10.0, 0), 100);
 
-				// Foony progress function bear made :) :)
+				// Foony progress function bear made :) :)   it dont work btw :)
 				//progressBar1.Value = (int)Math.Min(Math.Max(100.0 - Math.Log(distance, 2) / 10.0 * 100.0, 0), 100);
 
-				if (distance <= radius) 
+				if (distance <= radius) // this is just for the game (it checks if mouse is near the designated radius, adds score, and makes a new target)
                 {
 					Score = Score + 1;
 					Scorel.Text = Score.ToString();
@@ -77,7 +77,7 @@ namespace Mousetracker
             }
         }
 
-        private void ButAbout_MouseClick(object sender, MouseEventArgs e)
+        private void ButAbout_MouseClick(object sender, MouseEventArgs e) //opens the about stuff
         {
             About f2 = new About();
             f2.Show();
@@ -118,7 +118,7 @@ namespace Mousetracker
             }*/
         }
 
-        private void TargetGameing()
+        private void TargetGameing()  //(makes new targets)
         {
             Random r = new Random();
             TargetX = r.Next(0, 1919);
@@ -131,7 +131,7 @@ namespace Mousetracker
         private void Gamer()
         {
 
-            void DrawEllipseRectangle(PaintEventArgs e)
+            void DrawEllipseRectangle(PaintEventArgs e) //wip for a visual circle
             {
                 // Create pen.
                 Pen blackPen = new Pen(Color.Black, 3);
@@ -170,7 +170,7 @@ namespace Mousetracker
             */
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e) // ignore
         {
 
         }
@@ -194,18 +194,18 @@ namespace Mousetracker
             //GamingThread.Stop();
         }
 
-        private void MouseTracker_Load(object sender, EventArgs e)
+        private void MouseTracker_Load(object sender, EventArgs e) // ignore
         {
             
             //button1_MouseClick.trackerThread.();
         }
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) // ignore
         {
 
         }
 
-        private void toolStripTextBox2_Click(object sender, EventArgs e)
+        private void toolStripTextBox2_Click(object sender, EventArgs e) // ignore
         {
 
         }
